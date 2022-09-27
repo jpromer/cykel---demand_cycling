@@ -21,7 +21,7 @@ const persistConfig = {
   storage: storage,
   stateReconciler: autoMergeLevel2,
   transforms: [encryptor],
-  blacklist: ["loginReducer"],
+  blacklist: ["loginReducer", "bikeReducer"],
   whitelist: [],
 };
 
