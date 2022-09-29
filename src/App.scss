@@ -1,4 +1,4 @@
-@import url("https://fonts.googleapis.com/css2?family=Kaushan+Script&display=swap");
+@import url('https://fonts.googleapis.com/css2?family=Abyssinica+SIL&family=Kaushan+Script&display=swap');
 
 .App {
   text-align: center;
@@ -45,4 +45,13 @@ h3,
 h4,
 h5 {
   font-family: "Kaushan Script", cursive;
+}
+
+a {
+  text-decoration: none;
+  color: #197525;
+}
+
+p {
+  font-family: 'Abyssinica SIL', serif;
 }

@@ -13,7 +13,7 @@ const encryptor = encryptTransform({
   secretKey: "0MB24h35z%!G",
   onError: (err) => {
     console.error(err);
-  },
+  }
 });
 
 const persistConfig = {
@@ -21,8 +21,8 @@ const persistConfig = {
   storage: storage,
   stateReconciler: autoMergeLevel2,
   transforms: [encryptor],
-  blacklist: ["loginReducer", "bikeReducer"],
-  whitelist: [],
+  blacklist: ["bikeReducer"],
+  whitelist: ["loginReducer"]
 };
 
 const pReducer = persistReducer(persistConfig, rootReducers);

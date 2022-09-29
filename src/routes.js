@@ -6,16 +6,13 @@ import Layout from "./pages/Layout";
 
 import { useAuth0 } from "@auth0/auth0-react";
 import Map from "./pages/Map";
+import { useSelector } from "react-redux";
 
 function RoutesApp() {
   const [stateAuth, setStateAuth] = useState();
   const { isAuthenticated } = useAuth0();
+  const isAuth = useSelector((state) => state.loginReducer.isAuthenticated);
 
-  useEffect(() => {
-    if (isAuthenticated) {
-      setStateAuth(isAuthenticated);
-    }
-  }, [isAuthenticated]);
 
   return (
     <div>
@@ -23,11 +20,11 @@ function RoutesApp() {
         <Routes>
           <Route
             path="/"
-            element={!stateAuth ? <Banner /> : <Navigate to="/dashboard" />}
+            element={!isAuth ? <Banner /> : <Navigate to="dashboard" />}
           />
           <Route
-            path="/dashboard"
-            element={stateAuth ? <Layout /> : <Navigate to="/" />}
+            path="dashboard"
+            element={isAuth ? <Layout /> : <Navigate to="/" />}
           >
             <Route index element={<Dashboard />} />
             <Route path="map" element={<Map />} />

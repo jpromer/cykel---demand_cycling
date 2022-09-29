@@ -1,11 +1,23 @@
-import React from "react";
+import React, { useState } from "react";
+import { useDispatch, useSelector } from "react-redux";
 import MapView from "../components/Map/MapView";
+import { getLocations } from "../redux/actions/bikes.action";
+import Button from "@mui/material/Button";
+import Stack from "@mui/material/Stack";
 
 export default function Map() {
-  const position = [51.505, -0.09];
+  const dispatch = useDispatch();
+  const [marker, setMarker] = useState();
+
+  const marks = useSelector((state) => state.bikeReducer.locations);
+
+  useState(() => {
+    dispatch(getLocations());
+  }, []);
+
   return (
     <div>
-      <MapView />
+      <MapView marks={marks} />
     </div>
   );
 }

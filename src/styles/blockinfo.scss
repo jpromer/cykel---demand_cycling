@@ -1,0 +1,21 @@
+.blockInformation {
+    display: grid;
+    grid-template-columns: 50% 50%;
+    height: 100vh;
+    background-image: url("../assets/fondo.jpg");
+    background-size: cover;
+    background-repeat: no-repeat;
+    h1{
+        font-size: 65px;
+    }
+    &__info{
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        text-align: center;
+        padding: 4rem;
+    }
+    &__img{
+        height: 100vh;
+    }
+}

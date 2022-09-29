@@ -4,4 +4,9 @@
         font-size: 34px;
         color: #197525;
     }
+    &__contentCard {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+    }
 }

@@ -13,9 +13,10 @@ import Tooltip from "@mui/material/Tooltip";
 import MenuItem from "@mui/material/MenuItem";
 import AdbIcon from "@mui/icons-material/Adb";
 import { useSelector } from "react-redux";
+import { Link } from "react-router-dom";
 import "../../styles/menu.scss";
-
-
+import ModalForm from "../Modal/ModalForm";
+import LogoutButton from "../Login/LogoutButton";
 
 const NavMenu = () => {
   const [anchorElNav, setAnchorElNav] = React.useState(null);
@@ -45,23 +46,24 @@ const NavMenu = () => {
       <Container maxWidth="xl">
         <Toolbar disableGutters>
           <AdbIcon sx={{ display: { xs: "none", md: "flex" }, mr: 1 }} />
-          <Typography
-            variant="h6"
-            noWrap
-            component="a"
-            href="/"
-            sx={{
-              mr: 2,
-              display: { xs: "none", md: "flex" },
-              fontFamily: "monospace",
-              fontWeight: 700,
-              letterSpacing: ".3rem",
-              color: "inherit",
-              textDecoration: "none"
-            }}
-          >
-            LOGO
-          </Typography>
+          <Link to="/">
+            <Typography
+              variant="h6"
+              noWrap
+              component="a"
+              sx={{
+                mr: 2,
+                display: { xs: "none", md: "flex" },
+                fontFamily: "monospace",
+                fontWeight: 700,
+                letterSpacing: ".3rem",
+                color: "inherit",
+                textDecoration: "none"
+              }}
+            >
+              LOGO
+            </Typography>
+          </Link>
 
           <Box sx={{ flexGrow: 1, display: { xs: "flex", md: "none" } }}>
             <IconButton
@@ -93,7 +95,10 @@ const NavMenu = () => {
               }}
             >
               <MenuItem>
-                <Typography textAlign="center">MAPA</Typography>
+                <ModalForm
+                  element={<Typography textAlign="center">MAPA</Typography>}
+                  open={true}
+                />
               </MenuItem>
               <MenuItem>
                 <Typography textAlign="center">REGISTRAR BICICLETA</Typography>
@@ -120,12 +125,13 @@ const NavMenu = () => {
             LOGO
           </Typography>
           <Box sx={{ flexGrow: 1, display: { xs: "none", md: "flex" } }}>
-            <Button sx={{ my: 2, color: "white", display: "block" }}>
-              MAPA
-            </Button>
-            <Button sx={{ my: 2, color: "white", display: "block" }}>
-              REGISTRAR BICICLETA
-            </Button>
+            <Link to="map">
+              <Button sx={{ my: 2, color: "white", display: "block" }}>
+                MAPA
+              </Button>
+            </Link>
+
+            <ModalForm typeform="add" />
           </Box>
 
           <Box sx={{ flexGrow: 0 }}>
@@ -153,7 +159,7 @@ const NavMenu = () => {
               onClose={handleCloseUserMenu}
             >
               <MenuItem onClick={handleCloseUserMenu}>
-                <Typography textAlign="center">Salir</Typography>
+                <LogoutButton />
               </MenuItem>
             </Menu>
           </Box>

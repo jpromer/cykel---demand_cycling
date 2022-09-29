@@ -1,11 +1,6 @@
-.contentCard{
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
-    .MuiPaper-root{
-        margin: 1rem 2rem;
-    }
-    .MuiCardActions-root{
-      justify-content: end;
-    }
+.MuiPaper-root {
+  margin: 1rem 2rem;
+}
+.MuiCardActions-root {
+  justify-content: end;
 }
