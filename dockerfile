@@ -1,23 +1,22 @@
-FROM node:alpine as build
+FROM node:current-alpine AS builder
 
 WORKDIR /app
 
-COPY . /app
+COPY package*.json ./
+COPY package-lock.json ./
 
-ENV PATH /app/node_modules/.bin:$PATH
+RUN npm i
 
-RUN npm install
+COPY . .
 
 RUN npm run build
 
-FROM nginx:alpine
+FROM nginx:alpine AS final
 
-COPY --from=build /app/build /usr/share/nginx/html
+ENV NODE_ENV production
 
-RUN rm /etc/nginx/conf.d/default.conf
+COPY --from=builder /app/build /usr/share/nginx/html
 
-COPY /nginx.conf /etc/nginx/conf.d
+COPY nginx.conf /etc/nginx/conf.d/default.conf
 
-EXPOSE 80
-
-CMD ["nginx", "-g", "daemon off;"]
+ENTRYPOINT ["nginx", "-g", "daemon off;"]
